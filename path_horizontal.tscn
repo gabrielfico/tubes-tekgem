@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://blvxbdnuikvy8"]
+
+[ext_resource type="Script" path="res://path_horizontal.gd" id="1_vfdph"]
+[ext_resource type="Texture2D" uid="uid://b3fftly1qev3h" path="res://flying platform.png" id="1_vwp3l"]
+
+[sub_resource type="Curve2D" id="Curve2D_v351l"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1, -2, 0, 0, 0, 0, 49, -2, 0, 0, 0, 0, 235, -1)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0v2q"]
+size = Vector2(94, 12)
+
+[sub_resource type="Animation" id="Animation_bylm2"]
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-1.56, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_e71sj"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(-1.56, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lt4rn"]
+_data = {
+"RESET": SubResource("Animation_bylm2"),
+"move": SubResource("Animation_e71sj")
+}
+
+[node name="Path_Horizontal" type="Path2D"]
+curve = SubResource("Curve2D_v351l")
+script = ExtResource("1_vfdph")
+loop = false
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(-1, -2)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+position = Vector2(-3.8147e-06, -4.76837e-07)
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(-1, -2)
+
+[node name="FlyingPlatform" type="Sprite2D" parent="AnimatableBody2D"]
+position = Vector2(3.33786e-06, 3.8147e-06)
+texture = ExtResource("1_vwp3l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(4.76837e-06, 0)
+shape = SubResource("RectangleShape2D_h0v2q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lt4rn")
+}

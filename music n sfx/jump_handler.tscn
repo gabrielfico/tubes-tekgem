@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://yu1gv1t5d2gs"]
+
+[ext_resource type="AudioStream" uid="uid://b8agaea76ihgc" path="res://music n sfx/sfx jump.wav" id="1_7ooli"]
+[ext_resource type="Script" path="res://music n sfx/jump_handler.gd" id="1_y54ft"]
+
+[node name="Jump_Handler" type="Node2D"]
+script = ExtResource("1_y54ft")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_7ooli")
+bus = &"Sfx"

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cfdpdtvdnr7a8"
+path="res://.godot/imported/sfx new level.wav-7b3e1b85631e6da35b3abe19f6f2973b.sample"
+
+[deps]
+
+source_file="res://music n sfx/sfx new level.wav"
+dest_files=["res://.godot/imported/sfx new level.wav-7b3e1b85631e6da35b3abe19f6f2973b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

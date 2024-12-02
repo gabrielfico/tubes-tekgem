@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxpiba72xqspi"]
+
+[ext_resource type="Texture2D" uid="uid://corfaxd2r10rw" path="res://bg level 3.jpg" id="1_cose0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wsjfw"]
+texture = ExtResource("1_cose0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_utmsy"]
+texture = ExtResource("1_cose0")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1279.0
+offset_bottom = 737.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_wsjfw")
+
+[node name="Panel2" type="Panel" parent="."]
+offset_left = 1213.0
+offset_top = 2.0
+offset_right = 2407.0
+offset_bottom = 735.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_utmsy")

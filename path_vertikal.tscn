@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1aica0pl8l28"]
+
+[ext_resource type="Script" path="res://path_vertikal.gd" id="1_g8k8v"]
+[ext_resource type="Texture2D" uid="uid://b3fftly1qev3h" path="res://flying platform.png" id="2_tclfg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wakj1"]
+size = Vector2(10.9295, 94.0154)
+
+[sub_resource type="Animation" id="Animation_nosfw"]
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-1.56),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hrxc6"]
+resource_name = "move_vertikal"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-1.56, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sbfex"]
+_data = {
+"RESET": SubResource("Animation_nosfw"),
+"move_vertikal": SubResource("Animation_hrxc6")
+}
+
+[node name="Path_Vertikal" type="Path2D"]
+script = ExtResource("1_g8k8v")
+loop = false
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(68, -4)
+rotation = -1.5708
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(68, -4)
+rotation = -1.5708
+
+[node name="FlyingPlatform" type="Sprite2D" parent="AnimatableBody2D"]
+position = Vector2(-4.99998, -0.0130539)
+rotation = 1.57341
+texture = ExtResource("2_tclfg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(-4.41252, -0.0182953)
+shape = SubResource("RectangleShape2D_wakj1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sbfex")
+}

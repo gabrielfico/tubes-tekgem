@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=3 uid="uid://2fo7d7dvddhc"]
+
+[ext_resource type="Script" path="res://main menu/main_menu.gd" id="1_7fa5v"]
+[ext_resource type="Texture2D" uid="uid://dpojnbqt4q2hi" path="res://bg menu 1.jpg" id="1_k7wgv"]
+[ext_resource type="PackedScene" uid="uid://bc7cgg6iak0nt" path="res://options menu/options_menu.tscn" id="3_4nt68"]
+[ext_resource type="AudioStream" uid="uid://cpyinlkw8yy4a" path="res://music n sfx/Bg Music.mp3" id="4_2gqew"]
+
+[sub_resource type="SystemFont" id="SystemFont_l3qi0"]
+font_names = PackedStringArray("Serif")
+
+[sub_resource type="SystemFont" id="SystemFont_mjc71"]
+font_names = PackedStringArray("Impact")
+
+[node name="Main_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7fa5v")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_k7wgv")
+expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Separator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = SubResource("SystemFont_l3qi0")
+theme_override_font_sizes/font_size = 70
+text = "Go Ancient"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Separator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Start_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_mjc71")
+theme_override_font_sizes/font_size = 25
+text = "START GAME"
+
+[node name="Options_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_mjc71")
+theme_override_font_sizes/font_size = 25
+text = "OPTIONS"
+
+[node name="Credits_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_mjc71")
+theme_override_font_sizes/font_size = 25
+text = "CREDITS"
+
+[node name="Exit_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_mjc71")
+theme_override_font_sizes/font_size = 25
+text = "EXIT GAME
+"
+
+[node name="Options_Menu" parent="." instance=ExtResource("3_4nt68")]
+visible = false
+layout_mode = 1
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2gqew")
+autoplay = true
